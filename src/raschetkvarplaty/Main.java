@@ -365,8 +365,7 @@ public class Main extends javax.swing.JFrame {
 
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+   private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         // Расчет 
         // Проверка на заполнение всех полей
@@ -435,9 +434,13 @@ public class Main extends javax.swing.JFrame {
         //меняем формат итоговой суммы на 0,00
         dd=new java.text.DecimalFormat("0.00").format(ddd);   
         //меняем "," на ".
+        
         dd=dd.replace(",",".");
+        
         //отображаем итоговую сумму на форме
+        
         jTextField13.setText(dd);
+ 
 
         
         
