@@ -365,93 +365,89 @@ public class Main extends javax.swing.JFrame {
 
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        // Расчет 
-        // Проверка на заполнение всех полей
-        
-     if(jTextField1.getText().equals("")||jTextField2.getText().equals("")||
-             jTextField3.getText().equals("")||jTextField4.getText().equals("")){
-                  JOptionPane.showMessageDialog(null, "Не введены тарифы!");      
-     } else 
-     
-          if(jTextField5.getText().equals("")||jTextField7.getText().equals("")||
-             jTextField6.getText().equals("")||jTextField8.getText().equals("")){
-                  JOptionPane.showMessageDialog(null, "Не введены показания счетчиков!");      
-     } else{
-          
-              // Если все введено 
-                    Double d; String dd; Double ddd;
+  private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+   //процедура расчета
+   Raschet();
+}                                        
+private void Raschet(){
+   if((frmJkx.this.jTextField5.getText().trim().equals(""))||
+      (frmJkx.this.jTextField8.getText().trim().equals(""))||
+      (frmJkx.this.jTextField11.getText().trim().equals(""))||
+      (frmJkx.this.jTextField14.getText().trim().equals(""))||
+      (frmJkx.this.jTextField17.getText().trim().equals(""))){
+      //если хотя бы одно из полей, выделенных под тарифы, незаполнено,выводим ошибку 
+       JOptionPane.showMessageDialog(null, "Не введены тарифы!");   
+    }else{
+        //переменные  
+        Double d; String dd; Double ddd;
         d=0.00; dd=""; ddd=0.00;
         //Расчет
-        //1.Горячая вода
-        if(jTextField1.getText().trim().equals("")){ //если показания счетчика 0, тогда
+        //1.Горячая вода 
+        if(frmJkx.this.jTextField6.getText().trim().equals("")){ //если показания счетчика 0, тогда 
           d=0.00;             
         }else{
           //если не 0, считаем по формуле  
-          d = Double.parseDouble(jTextField1.getText())*Double.parseDouble(jTextField5.getText());    
+          d = Double.parseDouble(frmJkx.this.jTextField5.getText())*Double.parseDouble(frmJkx.this.jTextField6.getText());    
         }  
         //переводим в число формата 0,00
         dd=new java.text.DecimalFormat("0.00").format(d);   
         //меняем "," на "."
         dd=dd.replace(",",".");
         //отображаем сумму на форме в расчетах
-        jTextField9.setText(dd);
+        frmJkx.this.jTextField4.setText(dd);
         //итоговая накопительная сумма
         ddd=d;
         //2.Холодная вода        
-        if(jTextField2.getText().trim().equals("")){
+        if(frmJkx.this.jTextField9.getText().trim().equals("")){
           d=0.00;             
         }else{
-          d = Double.parseDouble(jTextField2.getText())*Double.parseDouble(jTextField6.getText());    
+          d = Double.parseDouble(frmJkx.this.jTextField8.getText())*Double.parseDouble(frmJkx.this.jTextField9.getText());    
         }  
-        dd=new java.text.DecimalFormat("0.00").format(d);  
+        dd=new java.text.DecimalFormat("0.00").format(d);   
         dd=dd.replace(",",".");
-        jTextField10.setText(dd);
+        frmJkx.this.jTextField7.setText(dd);
         ddd=ddd+d;
         //3.Электричество        
-        if(jTextField3.getText().trim().equals("")){
+        if(frmJkx.this.jTextField12.getText().trim().equals("")){
           d=0.00;    
         }else{
-          d = Double.parseDouble(jTextField3.getText())*Double.parseDouble(jTextField7.getText());    
+          d = Double.parseDouble(frmJkx.this.jTextField11.getText())*Double.parseDouble(frmJkx.this.jTextField12.getText());    
         }  
-        dd=new java.text.DecimalFormat("0.00").format(d);
+        dd=new java.text.DecimalFormat("0.00").format(d); 
         dd=dd.replace(",",".");
-        jTextField11.setText(dd);
+        frmJkx.this.jTextField10.setText(dd);
         ddd=ddd+d;
         //4.Газ         
-        if(jTextField4.getText().trim().equals("")){
+        if(frmJkx.this.jTextField15.getText().trim().equals("")){
           d=0.00;    
         }else{
-          d = Double.parseDouble(jTextField4.getText())*Double.parseDouble(jTextField8.getText());    
+          d = Double.parseDouble(frmJkx.this.jTextField14.getText())*Double.parseDouble(frmJkx.this.jTextField15.getText());    
         }  
         dd=new java.text.DecimalFormat("0.00").format(d);  
         dd=dd.replace(",",".");
-        jTextField12.setText(dd);
+        frmJkx.this.jTextField13.setText(dd);
         ddd=ddd+d;
-        
-        
+        //5.Интернет
+        if(frmJkx.this.jTextField18.getText().trim().equals("")){
+          d=0.00;    
+        }else{
+          d = Double.parseDouble(frmJkx.this.jTextField17.getText())*Double.parseDouble(frmJkx.this.jTextField18.getText());    
+        }
+        dd=new java.text.DecimalFormat("0.00").format(d);
+        dd=dd.replace(",",".");
+        frmJkx.this.jTextField16.setText(dd);
+        ddd=ddd+d;
+
         //меняем формат итоговой суммы на 0,00
         dd=new java.text.DecimalFormat("0.00").format(ddd);   
-        //меняем "," на ".
+        //меняем "," на ".Э
         dd=dd.replace(",",".");
         //отображаем итоговую сумму на форме
-        jTextField13.setText(dd);
-
+        frmJkx.this.jTextField19.setText(dd);
         
-        
-        
-  
-          }
-              
-              
-        
-        
-
-        
-        
-    }//GEN-LAST:event_jButton1ActionPerformed
+        return;
+    }    
+}
 
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
         // TODO add your handling code here:
