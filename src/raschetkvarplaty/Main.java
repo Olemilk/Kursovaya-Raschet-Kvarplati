@@ -505,6 +505,52 @@ if((evt.getKeyCode() == 40  )||(evt.getKeyCode() == 10)){
     }             // TODO add your handling code here:
     }//GEN-LAST:event_jTextField3KeyPressed
 
+
+
+private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+
+JFileChooser open = new JFileChooser(); //cоздадим диалог выбора файлов
+int option = open.showOpenDialog(open); //отобразим окно выбора файлов
+
+if (option == JFileChooser.APPROVE_OPTION) { //если файл выбран, тогда
+   try {
+       //System.out.println("select");
+       File f = open.getSelectedFile(); //выбранный файл
+       //создаем InputStreamReader, кодировка "CP866"
+       InputStreamReader in =   new InputStreamReader(new FileInputStream(f),"CP866"); 
+       //создаем переменную BufferedReader для использования метода readLine( ), 
+       BufferedReader bufferedIn=new BufferedReader(in);
+               
+       String p[]; //переменные для отображения тарифов на форме
+       p=new String[6];            
+       //присваиваем переменным значения из файла, используя чтение построчно readLin()        
+       p[1]=bufferedIn.readLine().trim();
+       p[2]=bufferedIn.readLine().trim();
+       p[3]=bufferedIn.readLine().trim();
+       p[4]=bufferedIn.readLine().trim();
+       p[5]=bufferedIn.readLine().trim();
+               
+       bufferedIn.close(); in.close(); //закрываем поток
+       
+       //отображаем на форме 
+       jTextField5.setText(p[1]);jTextField8.setText(p[2]);jTextField11.setText(p[3]);
+       jTextField14.setText(p[4]);jTextField17.setText(p[5]);
+       //поля с результатами очищаем     
+       jTextField4.setText("");jTextField7.setText("");jTextField10.setText("");
+       jTextField13.setText("");jTextField16.setText("");
+        
+       jTextField6.requestFocusInWindow();        
+   
+   } catch (Exception ex) {
+     System.out.println(ex.getMessage());
+   }
+}
+
+}                                        
+
+private void openFrmJkx(java.awt.event.WindowEvent evt) {                            
+}   
+
     /**
      * @param args the command line arguments
      */
@@ -587,3 +633,4 @@ if((evt.getKeyCode() == 40  )||(evt.getKeyCode() == 10)){
     private javax.swing.JTextField jTextField9;
     // End of variables declaration//GEN-END:variables
 }
+
